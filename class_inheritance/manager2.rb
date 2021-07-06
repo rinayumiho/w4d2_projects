@@ -1,0 +1,31 @@
+require_relative 'employee'
+class Manager < Employee 
+    attr_reader :employees 
+    def initialize(name, title, salary, boss, employees)
+        super(name, title, salary, boss)
+        @employees = employees
+    end
+    
+    def bonus(multiplier)
+        sum_salary * multiplier
+    end
+
+    def sum_salary
+        sum = 0
+        employees.each do |e|
+            sum += e.salary
+            sum += e.sum_salary if e.is_a?(Manager)
+        end
+        sum
+    end
+
+end
+
+david = Employee.new("David", "TA", 10000, "Darren") 
+shawna = Employee.new("Shawna", "TA", 12000, "Darren")
+darren = Manager.new("Darren", "TA Manager", 78000, "Ned", [david, shawna])
+ned = Manager.new("Ned", "Founder", 1000000, nil, [darren])
+
+p ned.bonus(5) #500_000
+p darren.bonus(4) #88_000
+p david.bonus(3) #30_000
