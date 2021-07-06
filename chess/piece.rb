@@ -1,13 +1,17 @@
+# require_relative 'board'
 class Piece
-    attr_reader :color, :board, :position
+    # attr_reader :color, :board, :position
 
-    def initialize(color, board, position)
-        @color = color
-        @position = position
-        @board = board
+    def initialize
+        # @color = color
+        # @position = position
+        # @board = board
+    
     end
+   
 
-    def pos=(val)
-        @position = val
-    end
+ 
 end
+
+# piece = Piece.new 
+# p piece 
