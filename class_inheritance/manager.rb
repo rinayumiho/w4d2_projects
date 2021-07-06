@@ -10,16 +10,11 @@ class Manager < Employee
         # return salary if employees.nil?
         bonus = 0
         employees.each do |employee|
-            if employee.is_a?(Employee)
-                bonus += employee.salary
-                # p employee.salary
-            else
-                bonus += employee.bonus(multiplier)
-            end
+            bonus += (employee.salary * multiplier)
+            bonus += (employee.bonus(multiplier)) if employee.is_a?(Manager)  
         end
-        bonus
+        bonus 
     end
-
 end
 
 david = Employee.new("David", "TA", 10000, "Darren") 
