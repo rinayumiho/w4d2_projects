@@ -18,12 +18,17 @@ class Piece
     end
 
     def to_s
+        self.symbol
+    end
+    def symbol
 
     end
 
     def valid_moves
         self.moves
     end
+  
+
  
 end
 
