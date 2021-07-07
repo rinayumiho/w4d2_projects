@@ -1,8 +1,11 @@
 class Bishop < Piece
-    def initialize(color, position, board, symbol)
-        super(color, position, board)
-        @symbol = symbol
-    end
+    
+    def symbol 
+        '♗'.colorize(color)
+    end 
 
+    def move_dirs
+       diagonal_dirs
+    end
     
 end
