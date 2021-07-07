@@ -1,4 +1,4 @@
-Modulos stepable
+module Stepable
 
     def moves
         x, y = self.position

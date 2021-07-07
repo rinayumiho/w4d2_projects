@@ -1,4 +1,4 @@
-Modules Slideable
+module Slideable
     HORIZONTAL_DIRS = [[0, 1], [0, -1], [1, 0], [-1, 0]]
     DIAGONAL_DIRS = [[1, 1], [1, -1], [-1, 1], [-1, -1]]
     
@@ -32,5 +32,6 @@ Modules Slideable
            valid_moves << [x,y]
            break if borar[x,y].color != self.color
         end
+        valid_moves 
     end
 end

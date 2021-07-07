@@ -1,4 +1,13 @@
 require_relative 'piece'
+require_relative 'nullpiece'
+require_relative 'rook'
+require_relative  'king'
+require_relative 'knight'
+require_relative 'bishop'
+require_relative 'queen'
+require_relative 'pawn'
+
+
 class Board
     def initialize
         @grid = Array.new(8) {Array.new(8, NullPiece.instance)} 
@@ -13,7 +22,7 @@ class Board
     def set_board 
         @grid.each.with_index do |row, idx| 
             if idx == 0 
-                row.map!.each_index do |ele, i| 
+                row.map!.with_index do |ele, i| 
                     if i == 0 || i == 7 
                          Rook.new('white', [idx, i], self)
                     elsif i == 1 || i == 6 
@@ -23,14 +32,17 @@ class Board
                     elsif i == 3 
                         Queen.new('white', [idx, i], self)
                     elsif i == 4 
-                        Kind.new('white', [idx, i], self)
+                        King.new('white', [idx, i], self)
                     end
                 end
             elsif idx == 1 
-                row.map!.with_index{|ele, i| ele == Pawn.new('white',[idx, i], self)}
+                row.map!.with_index{|ele, i| ele = Pawn.new('white',[idx, i], self)}
 
             elsif idx == 6 
-                row.map!.each_index do |ele, i| 
+                row.map!.with_index{|ele, i| ele = Pawn.new('black',[idx, i], self)}
+
+            elsif idx == 7 
+                row.map!.with_index do |ele, i| 
                     if i == 0 || i == 7 
                          Rook.new('black', [idx, i], self)
                     elsif i == 1 || i == 6 
@@ -38,14 +50,12 @@ class Board
                     elsif i == 2 || i == 5
                         Bishop.new('black', [idx, i], self)
                     elsif i == 3 
-                        Kind.new('black', [idx, i], self)
+                        King.new('black', [idx, i], self)
                     elsif i == 4 
                         Queen.new('black', [idx, i], self)
                     end
                 end
-
-            elsif idx == 7 
-                row.map!.with_index{|ele, i| ele == Pawn.new('black',[idx, i], self)}
+                
             end
         end
     end
@@ -57,7 +67,14 @@ class Board
     end
     def move_piece(start_pos, end_pos)
         self[end_pos] = self[start_pos]
-        self[start_pos] = nil 
+        self[start_pos] = NullPiece.instance 
+    end
+    def redner 
+        puts '|' + '-------------------------------' + '|'
+        @grid.each {|sub_grid| 
+            puts '| ' + sub_grid.join(' | ') + ' |'
+            puts '|' + '-------------------------------' + '|' }
+        
     end
 end
 
@@ -75,4 +92,5 @@ board = Board.new
 # p '--------'
 # board[pos2] = board[pos]
 # p board[pos2]
-p board 
+board.redner
+# p = Pawn.new('black', [1,1], '')

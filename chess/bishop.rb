@@ -3,7 +3,7 @@ require_relative 'piece'
 require 'colorize'
 
 class Bishop < Piece
-    include slideable
+    include Slideable
     
     def symbol 
         '♗'.colorize(color)
