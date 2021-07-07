@@ -39,7 +39,7 @@ def feed_me_a_fruit
     reaction(maybe_fruit) 
   rescue 
     if maybe_fruit == 'coffee'
-      puts 'that was wrong but try again'
+      puts 'that wasnt a fruit but try again'
       retry 
     end
     puts 'that wasnt a fruit'
