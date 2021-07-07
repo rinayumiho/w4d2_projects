@@ -8,7 +8,22 @@ class Piece
         @board = board
     end
    
-    def 
+    def empty?
+        return true if board[self.position] == NullPiece
+        false
+    end
+
+    def pos=(val)
+        position == val
+    end
+
+    def to_s
+
+    end
+
+    def valid_moves
+        self.moves
+    end
  
 end
 
