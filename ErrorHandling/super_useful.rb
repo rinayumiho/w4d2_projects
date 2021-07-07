@@ -12,21 +12,6 @@ def reaction(maybe_fruit)
   else 
     raise StandardError 
   end 
-  
-    # loop do 
-    #   if FRUITS.include?(maybe_fruit)
-    #     puts "OMG, thanks so much for the #{maybe_fruit}!"
-    #     break 
-    #   elsif maybe_fruit == 'coffee'
-    #     puts 'that wasnt a fruit! try again'
-    #     maybe_fruit = gets.chomp
-    #     reaction(maybe_fruit)
-    #     break 
-    #   else 
-    #     raise StandardError
-    #   end
-    # end
-    
 end
 
 def feed_me_a_fruit
